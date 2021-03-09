@@ -16,7 +16,7 @@ GoLang SDK for [Contentful's](https://www.contentful.com) Content Delivery, Prev
 
 # Install
 
-`go get github.com/contentful-labs/contentful-go`
+`go get github.com/stryd/contentful-go`
 
 # Getting started
 
@@ -24,7 +24,7 @@ Import into your Go project or library
 
 ```go
 import (
-	contentful "github.com/contentful-labs/contentful-go"
+	contentful "github.com/stryd/contentful-go"
 )
 ```
 
@@ -59,7 +59,7 @@ cma.Debug = true
 
 ## Working with resource services
 
-Currently SDK exposes the following resource services:
+Current SDK exposes the following resource services:
 
 * Spaces
 * APIKeys

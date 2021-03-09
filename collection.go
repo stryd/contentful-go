@@ -25,7 +25,7 @@ type Collection struct {
 	Includes interface{}   `json:"includes"`
 }
 
-// NewCollection initilazies a new collection
+// NewCollection initializes a new collection
 func NewCollection(options *CollectionOptions) *Collection {
 	query := NewQuery()
 	query.Order("sys.createdAt", true)
