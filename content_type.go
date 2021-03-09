@@ -290,7 +290,7 @@ func (ct *ContentType) GetVersion() int {
 
 // List return a content type collection
 func (service *ContentTypesService) List(spaceID string) *Collection {
-	path := fmt.Sprintf("/spaces/%s/content_types", spaceID)
+	path := fmt.Sprintf("/spaces/%s/environments/%s/content_types", spaceID, service.c.Environment)
 	method := "GET"
 
 	req, err := service.c.newRequest(method, path, nil, nil)
@@ -307,7 +307,7 @@ func (service *ContentTypesService) List(spaceID string) *Collection {
 
 // Get fetched a content type specified by `contentTypeID`
 func (service *ContentTypesService) Get(spaceID, contentTypeID string) (*ContentType, error) {
-	path := fmt.Sprintf("/spaces/%s/content_types/%s", spaceID, contentTypeID)
+	path := fmt.Sprintf("/spaces/%s/environments/%s/content_types/%s", spaceID, service.c.Environment, contentTypeID)
 	method := "GET"
 
 	req, err := service.c.newRequest(method, path, nil, nil)
@@ -353,7 +353,7 @@ func (service *ContentTypesService) Upsert(spaceID string, ct *ContentType) erro
 
 // Delete the content_type
 func (service *ContentTypesService) Delete(spaceID string, ct *ContentType) error {
-	path := fmt.Sprintf("/spaces/%s/content_types/%s", spaceID, ct.Sys.ID)
+	path := fmt.Sprintf("/spaces/%s/environments/%s/content_types/%s", spaceID, service.c.Environment, ct.Sys.ID)
 	method := "DELETE"
 
 	req, err := service.c.newRequest(method, path, nil, nil)
@@ -369,7 +369,7 @@ func (service *ContentTypesService) Delete(spaceID string, ct *ContentType) erro
 
 // Activate the contenttype, a.k.a publish
 func (service *ContentTypesService) Activate(spaceID string, ct *ContentType) error {
-	path := fmt.Sprintf("/spaces/%s/content_types/%s/published", spaceID, ct.Sys.ID)
+	path := fmt.Sprintf("/spaces/%s/environments/%s/content_types/%s/published", spaceID, service.c.Environment, ct.Sys.ID)
 	method := "PUT"
 
 	req, err := service.c.newRequest(method, path, nil, nil)
@@ -385,7 +385,7 @@ func (service *ContentTypesService) Activate(spaceID string, ct *ContentType) er
 
 // Deactivate the contenttype, a.k.a unpublish
 func (service *ContentTypesService) Deactivate(spaceID string, ct *ContentType) error {
-	path := fmt.Sprintf("/spaces/%s/content_types/%s/published", spaceID, ct.Sys.ID)
+	path := fmt.Sprintf("/spaces/%s/environments/%s/content_types/%s/published", spaceID, service.c.Environment, ct.Sys.ID)
 	method := "DELETE"
 
 	req, err := service.c.newRequest(method, path, nil, nil)
